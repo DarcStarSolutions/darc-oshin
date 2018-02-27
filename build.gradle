@@ -16,14 +16,14 @@ buildscript {
         classpath("com.toomuchcoding:uptodate-gradle-plugin:1.0.1")
         classpath("org.springframework.build.gradle:propdeps-plugin:+")
         classpath("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:${gitPropertiesPluginVersion}")
-        classpath ("org.junit.platform:junit-platform-gradle-plugin:1.0.1")
+        classpath ("org.junit.platform:junit-platform-gradle-plugin:1.1.0")
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
+//apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.unbroken-dome.test-sets'
 apply plugin: 'com.toomuchcoding.uptodate'
@@ -60,9 +60,9 @@ repositories {
     }
 }
 
-springBoot {
+/*springBoot {
     buildInfo()
-}
+}*/
 
 compileJava.dependsOn(processResources)
 
@@ -75,6 +75,7 @@ dependencyManagement {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter")
+    compile("net.java.dev.jna:jna:4.5.1")
     optional("org.springframework.boot:spring-boot-configuration-processor")
     optional("org.springframework.boot:spring-boot-devtools")
     testCompile("org.codehaus.groovy:groovy-all")
