@@ -4,5 +4,5 @@ build:
   verbosity: detailed
 
 build_script:
-  - gradlew check -Ddarc-oshin.platform=windows
+  - gradlew check -Dspring.profiles.active=windows
   
