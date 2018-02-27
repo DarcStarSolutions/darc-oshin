@@ -23,14 +23,16 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
     }
 
     @Bean
+    @Profile("windows")
+    Platform windowsPlatform() {
+        return Platform.WINDOWS
+    }
+
+    @Bean
     @ConditionalOnMissingBean
     Platform defaultPlatform() {
         return Platform.LINUX
     }
 
-    @Bean
-    @Profile("windows")
-    Platform windowsPlatform() {
-        return Platform.WINDOWS
-    }
+
 }

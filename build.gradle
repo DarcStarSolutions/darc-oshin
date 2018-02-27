@@ -86,6 +86,10 @@ dependencies {
 
 }
 
+test{
+    systemProperties System.properties
+}
+
 eclipse {
     classpath {
         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
