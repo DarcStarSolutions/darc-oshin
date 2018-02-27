@@ -27,6 +27,9 @@ public class PlatformSpecificationDeterminationServiceImpl implements PlatformSp
             case Platform.ANDROID:
                 platform = PlatformSpecification.Platform.ANDROID;
                 break;
+            case Platform.WINDOWS:
+                platform = PlatformSpecification.Platform.WINDOWS;
+                break;
 
             default:
                 platform = PlatformSpecification.Platform.UNKNOWN;
