@@ -17,7 +17,13 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
 
     @Bean
     @ConditionalOnProperty(name = "darc-oshin.platform", havingValue = "linux", matchIfMissing = true)
-    Platform linux() {
+    Platform linuxPlatform() {
         return Platform.LINUX
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "darc-oshin.platform", havingValue = "windows")
+    Platform windowsPlatform() {
+        return Platform.WINDOWS
     }
 }

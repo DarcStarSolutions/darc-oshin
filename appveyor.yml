@@ -4,5 +4,5 @@ build:
   verbosity: detailed
 
 build_script:
-  - gradlew build
+  - gradlew check -Ddarc-oshin.platform=windows
   
