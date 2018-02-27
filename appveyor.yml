@@ -1,0 +1,8 @@
+version: "{branch} {build}"
+
+build:
+  verbosity: detailed
+
+build_script:
+  - gradlew build
+  
