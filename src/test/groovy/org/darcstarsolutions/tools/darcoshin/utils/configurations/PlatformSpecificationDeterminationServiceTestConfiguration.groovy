@@ -36,7 +36,7 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
     }
 
     @Bean
-    @Profile("windows")
+    @Profile("mac-osx")
     PlatformType macOsxPlatform() {
         return MAC_OSX
     }

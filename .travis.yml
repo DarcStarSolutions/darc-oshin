@@ -15,7 +15,7 @@ matrix:
     - os: osx
       osx_image: xcode9.3
       env:
-        - SPRING_PROFILES_ACTIVE: osx,64-bit
+        - SPRING_PROFILES_ACTIVE: mac-osx,64-bit
 
 cache:
   directories:
