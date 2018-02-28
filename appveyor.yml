@@ -4,7 +4,7 @@ build:
   verbosity: detailed
 
 environment:
-  - SPRING_PROFILES_ACTIVE: windows
+  SPRING_PROFILES_ACTIVE: windows
 
 cache:
   - '%USERPROFILE%/.gradle/caches/'
