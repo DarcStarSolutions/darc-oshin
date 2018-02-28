@@ -8,7 +8,7 @@ environment:
 
 
 build_script:
-  - gradlew test
+  - gradlew test --no-daemon
 
 on_success:
   - git status
