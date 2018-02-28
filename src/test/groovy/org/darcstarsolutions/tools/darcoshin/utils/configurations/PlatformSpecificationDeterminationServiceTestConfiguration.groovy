@@ -12,9 +12,8 @@ import org.springframework.core.annotation.Order
 
 import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture.BIT_32
 import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture.BIT_64
+import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformType.*
 import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformType
-import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformType.LINUX
-import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformType.WINDOWS
 
 @TestConfiguration
 class PlatformSpecificationDeterminationServiceTestConfiguration {
@@ -34,6 +33,12 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
     @Profile("windows")
     PlatformType windowsPlatform() {
         return WINDOWS
+    }
+
+    @Bean
+    @Profile("windows")
+    PlatformType macOsxPlatform() {
+        return MAC_OSX
     }
 
     @Bean

@@ -30,7 +30,7 @@ public class PlatformSpecification {
 
     public enum PlatformFamily {
         UNKNOWN,
-        MAC,
+        OSX,
         LINUX,
         UNIX,
         WINDOWS;
@@ -56,7 +56,7 @@ public class PlatformSpecification {
         /**
          * macOS (OS X)
          */
-        MACOSX,
+        MAC_OSX,
         /**
          * Solaris (SunOS)
          */
