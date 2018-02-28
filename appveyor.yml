@@ -4,5 +4,5 @@ build:
   verbosity: detailed
 
 build_script:
-  - gradlew check -Dspring.profiles.active=windows
+  - gradlew test -Dspring.profiles.active=windows
   

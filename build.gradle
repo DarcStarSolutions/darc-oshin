@@ -87,8 +87,9 @@ dependencies {
 }
 
 test{
-    systemProperties System.properties
+    systemProperty 'spring.profiles.active', System.getProperty('spring.profiles.active')
 }
+
 
 eclipse {
     classpath {
