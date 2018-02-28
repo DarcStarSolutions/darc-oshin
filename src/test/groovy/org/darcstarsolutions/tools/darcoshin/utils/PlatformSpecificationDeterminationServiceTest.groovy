@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.core.env.Environment
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
@@ -24,11 +25,15 @@ class PlatformSpecificationDeterminationServiceTest {
     @Autowired
     PlatformSpecification.Platform platform
 
+    @Autowired
+    Environment environment
+
     @Test
     void testExistence() {
         assertThat(platformSpecificationDeterminationService) isNotNull()
         assertThat(platform).isNotNull()
-        LOGGER.info("Active Profile: " + System.getProperty("spring.profiles.active"))
+        assertThat(environment).isNotNull()
+        LOGGER.info("Active Profiles: $environment.activeProfiles")
     }
 
     @Test

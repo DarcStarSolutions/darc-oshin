@@ -87,7 +87,7 @@ dependencies {
 }
 
 test{
-    systemProperty 'spring.profiles.active', System.getProperty('spring.profiles.active')
+    systemProperties(System.getProperties())
 }
 
 
