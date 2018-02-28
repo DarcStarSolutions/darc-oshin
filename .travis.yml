@@ -1,12 +1,22 @@
 language: java
 
-env:
-  - SPRING_PROFILES_ACTIVE: linux,64-bit
+
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-  
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      env:
+        - SPRING_PROFILES_ACTIVE: linux,64-bit
+    - os: osx
+      osx_image: xcode9.3
+      env:
+        - SPRING_PROFILES_ACTIVE: osx,64-bit
+
 cache:
   directories:
     - $HOME/.gradle/caches/
