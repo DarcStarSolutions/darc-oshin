@@ -26,22 +26,25 @@ public class PlatformSpecificationDeterminationServiceImpl implements PlatformSp
 
     @Override
     public PlatformType determinePlatformType() {
-        PlatformType platform;
+        PlatformType platformType;
         switch (Platform.getOSType()) {
             case Platform.LINUX:
-                platform = LINUX;
+                platformType = LINUX;
                 break;
             case Platform.ANDROID:
-                platform = ANDROID;
+                platformType = ANDROID;
                 break;
             case Platform.WINDOWS:
-                platform = WINDOWS;
+                platformType = WINDOWS;
                 break;
-
+            case Platform.MAC:
+                platformType = MAC_OSX;
+                break;
+                
             default:
-                platform = UNKNOWN;
+                platformType = UNKNOWN;
         }
-        return platform;
+        return platformType;
     }
 
     @Override
