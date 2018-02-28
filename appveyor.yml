@@ -6,9 +6,15 @@ build:
 environment:
   SPRING_PROFILES_ACTIVE: windows
 
-cache:
-  - '%USERPROFILE%/.gradle/caches/'
-  - '%USERPROFILE%/.gradle/wrapper/'
+
 build_script:
   - gradlew test
-  
+
+on_success:
+  - git status
+  - ps: rm C:\Users\appveyor\.gradle\caches\modules-2\modules-2.lock -force
+  - ps: rm C:\Users\appveyor\.gradle\caches\*\plugin-resolution\ -recurse -force
+
+cache:
+  - C:\Users\appveyor\.gradle\caches -> .gradle-wrapper\gradle-wrapper.properties
+  - C:\Users\appveyor\.gradle\wrapper -> .gradle-wrapper\gradle-wrapper.properties
