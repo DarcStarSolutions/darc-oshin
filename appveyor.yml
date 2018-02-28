@@ -4,11 +4,13 @@ build:
   verbosity: detailed
 
 environment:
-  SPRING_PROFILES_ACTIVE: windows
   matrix:
   - JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+    SPRING_PROFILES_ACTIVE: windows 64-bit
   - JAVA_HOME: C:\Program Files\Java\jdk9
+    SPRING_PROFILES_ACTIVE: windows 64-bit
   - JAVA_HOME: C:\Program Files (x86)\Java\jdk1.8.0
+    SPRING_PROFILES_ACTIVE: windows 32-bit
 
 matrix:
   fast_finish: true
