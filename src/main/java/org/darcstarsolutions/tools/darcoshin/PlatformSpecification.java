@@ -2,14 +2,15 @@ package org.darcstarsolutions.tools.darcoshin;
 
 public class PlatformSpecification {
 
-    public static final PlatformSpecification UNKNOWN = new PlatformSpecification(PlatformFamily.UNKNOWN, Platform.UNKNOWN, PlatformArchitecture.UNKNOWN);
+    public static final PlatformSpecification UNKNOWN = new PlatformSpecification(PlatformFamily.UNKNOWN, PlatformType.UNKNOWN, PlatformArchitecture.UNKNOWN);
+
     private PlatformFamily platformFamily;
-    private Platform platform;
+    private PlatformType platformType;
     private PlatformArchitecture architecture;
 
-    public PlatformSpecification(final PlatformFamily platformFamily, final Platform platform, final PlatformArchitecture architecture) {
+    public PlatformSpecification(PlatformFamily platformFamily, PlatformType platformType, PlatformArchitecture architecture) {
         this.platformFamily = platformFamily;
-        this.platform = platform;
+        this.platformType = platformType;
         this.architecture = architecture;
     }
 
@@ -17,8 +18,8 @@ public class PlatformSpecification {
         return platformFamily;
     }
 
-    public Platform getPlatform() {
-        return platform;
+    public PlatformType getPlatformType() {
+        return platformType;
     }
 
 
@@ -40,7 +41,7 @@ public class PlatformSpecification {
         }
     }
 
-    public enum Platform {
+    public enum PlatformType {
         UNKNOWN,
         /**
          * Microsoft Windows

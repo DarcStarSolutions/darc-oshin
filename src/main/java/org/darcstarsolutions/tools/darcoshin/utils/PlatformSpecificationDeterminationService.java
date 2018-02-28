@@ -1,15 +1,18 @@
 package org.darcstarsolutions.tools.darcoshin.utils;
 
 import org.darcstarsolutions.tools.darcoshin.PlatformSpecification;
+import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture;
+import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformFamily;
+import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformType;
 
 public interface PlatformSpecificationDeterminationService {
 
 
     PlatformSpecification determinePlatformSpecification();
 
-    PlatformSpecification.Platform determinePlatform();
+    PlatformType determinePlatformType();
 
-    PlatformSpecification.PlatformFamily determinePlatformFamily();
+    PlatformFamily determinePlatformFamily();
 
-    PlatformSpecification.PlatformArchitecture determinePlatformArchitecture();
+    PlatformArchitecture determinePlatformArchitecture();
 }

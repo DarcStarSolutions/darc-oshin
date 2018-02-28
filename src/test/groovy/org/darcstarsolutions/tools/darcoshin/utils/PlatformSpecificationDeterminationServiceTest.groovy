@@ -20,37 +20,46 @@ class PlatformSpecificationDeterminationServiceTest {
     static Logger LOGGER = LoggerFactory.getLogger(PlatformSpecificationDeterminationServiceTest.class)
 
     @Autowired
+    Environment environment
+
+    @Autowired
     PlatformSpecificationDeterminationService platformSpecificationDeterminationService
 
     @Autowired
-    PlatformSpecification.Platform platform
+    PlatformSpecification.PlatformType platformType
 
     @Autowired
-    Environment environment
+    PlatformSpecification.PlatformArchitecture platformArchitecture
 
     @Test
     void testExistence() {
-        assertThat(platformSpecificationDeterminationService) isNotNull()
-        assertThat(platform).isNotNull()
         assertThat(environment).isNotNull()
-        LOGGER.info("Active Profiles: $environment.activeProfiles")
+        LOGGER.debug("Active Profiles: $environment.activeProfiles")
+        assertThat(platformSpecificationDeterminationService).isNotNull()
+        assertThat(platformType).isNotNull()
+        LOGGER.info("Platform type defined by environment: ${platformType}")
+        assertThat(platformArchitecture).isNotNull()
+        LOGGER.info("PlatformArchitecture defined by environment: ${platformArchitecture}")
+
     }
 
     @Test
-    void determinePlatformSpecification() {
+    void testDeterminePlatformSpecification() {
     }
 
     @Test
-    void determinePlatform() {
-        PlatformSpecification.Platform platform1 = platformSpecificationDeterminationService.determinePlatform()
-        assertThat(platform1).isEqualTo(platform)
+    void testDeterminePlatformType() {
+        PlatformSpecification.PlatformType platformType1 = platformSpecificationDeterminationService.determinePlatformType()
+        assertThat(platformType1).isEqualTo(platformType)
     }
 
     @Test
-    void determinePlatformFamily() {
+    void testDeterminePlatformFamily() {
     }
 
     @Test
-    void determinePlatformArchitecture() {
+    void testDeterminePlatformArchitecture() {
+        PlatformSpecification.PlatformArchitecture platformArchitecture1 = platformSpecificationDeterminationService.determinePlatformArchitecture()
+        assertThat(platformArchitecture1).isEqualTo(platformArchitecture)
     }
 }
