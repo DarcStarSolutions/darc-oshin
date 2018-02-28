@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Profile
+import org.springframework.core.Ordered
+import org.springframework.core.annotation.Order
 
 import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture.BIT_32
 import static org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture.BIT_64
@@ -36,15 +38,12 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
+    @Order(value = Ordered.LOWEST_PRECEDENCE)
     PlatformType defaultPlatform() {
         return LINUX
     }
 
-    @Bean
-    @ConditionalOnMissingBean
-    PlatformArchitecture defaultPlatformArchitecture() {
-        return BIT_64
-    }
+
 
     @Bean
     @Profile("32-bit")
@@ -58,4 +57,10 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
         return BIT_64
     }
 
+    @Bean
+    @Order(value = Ordered.LOWEST_PRECEDENCE)
+    @ConditionalOnMissingBean
+    PlatformArchitecture defaultPlatformArchitecture() {
+        return BIT_64
+    }
 }
