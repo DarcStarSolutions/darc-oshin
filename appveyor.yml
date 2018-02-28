@@ -3,8 +3,8 @@ version: "{branch} {build}"
 build:
   verbosity: detailed
 
-before_build:
-  -cmd: set SPRING_PROFILES_ACTIVE=windows
+environment:
+  - SPRING_PROFILES_ACTIVE: windows
 
 cache:
   - '%USERPROFILE%/.gradle/caches/'
