@@ -1,6 +1,7 @@
 package org.darcstarsolutions.tools.darcoshin.utils.configurations
 
 import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture
+import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformFamily
 import org.darcstarsolutions.tools.darcoshin.utils.PlatformSpecificationDeterminationService
 import org.darcstarsolutions.tools.darcoshin.utils.PlatformSpecificationDeterminationServiceImpl
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -48,7 +49,30 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
         return LINUX
     }
 
+    @Bean
+    @Profile("linux")
+    PlatformFamily linuxPlatformFamily() {
+        return PlatformFamily.LINUX
+    }
 
+    @Bean
+    @Profile("windows")
+    PlatformFamily windowsPlatformFamily() {
+        return PlatformFamily.WINDOWS
+    }
+
+    @Bean
+    @Profile("mac-osx")
+    PlatformFamily macOsxPlatformFamily() {
+        return PlatformFamily.OSX
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @Order(value = Ordered.LOWEST_PRECEDENCE)
+    PlatformFamily defaultPlatformFamily() {
+        return PlatformFamily.LINUX
+    }
 
     @Bean
     @Profile("32-bit")

@@ -15,4 +15,6 @@ public interface PlatformSpecificationDeterminationService {
     PlatformFamily determinePlatformFamily();
 
     PlatformArchitecture determinePlatformArchitecture();
+
+    PlatformFamily determinePlatformFamily(PlatformType platformType);
 }

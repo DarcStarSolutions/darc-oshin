@@ -49,7 +49,29 @@ public class PlatformSpecificationDeterminationServiceImpl implements PlatformSp
 
     @Override
     public PlatformFamily determinePlatformFamily() {
-        return null;
+        PlatformType platformType = determinePlatformType();
+        return this.determinePlatformFamily(platformType);
+    }
+
+    @Override
+    public PlatformFamily determinePlatformFamily(PlatformType platformType) {
+        PlatformFamily platformFamily;
+        switch (platformType) {
+            case LINUX:
+                platformFamily = PlatformFamily.LINUX;
+                break;
+            case WINDOWS:
+            case WINDOWS_CE:
+                platformFamily = PlatformFamily.WINDOWS;
+                break;
+            case MAC_OSX:
+                platformFamily = PlatformFamily.OSX;
+                break;
+            default:
+                platformFamily = PlatformFamily.UNKNOWN;
+        }
+
+        return platformFamily;
     }
 
     @Override
