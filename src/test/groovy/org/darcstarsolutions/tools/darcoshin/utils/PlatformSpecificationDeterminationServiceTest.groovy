@@ -34,6 +34,9 @@ class PlatformSpecificationDeterminationServiceTest {
     @Autowired
     PlatformSpecification.PlatformFamily platformFamily
 
+    @Autowired
+    PlatformSpecification platformSpecification
+
     @Test
     void testExistence() {
         assertThat(environment).isNotNull()
@@ -41,13 +44,21 @@ class PlatformSpecificationDeterminationServiceTest {
         assertThat(platformSpecificationDeterminationService).isNotNull()
         assertThat(platformType).isNotNull()
         LOGGER.info("Platform type defined by environment: ${platformType}")
+        assertThat(platformFamily).isNotNull()
+        LOGGER.info("Platform family defined by environment: ${platformFamily}")
         assertThat(platformArchitecture).isNotNull()
-        LOGGER.info("PlatformArchitecture defined by environment: ${platformArchitecture}")
+        LOGGER.info("Platform architecture defined by environment: ${platformArchitecture}")
+        assertThat(platformSpecification).isNotNull()
+        LOGGER.info("Platform specification defined by environment: ${platformSpecification}")
+
 
     }
 
     @Test
     void testDeterminePlatformSpecification() {
+        PlatformSpecification platformSpecification1 = platformSpecificationDeterminationService.determinePlatformSpecification()
+        assertThat(platformSpecification1).isNotNull()
+        assertThat(platformSpecification1).isEqualTo(platformSpecification)
     }
 
     @Test

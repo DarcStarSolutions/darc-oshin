@@ -1,17 +1,19 @@
 package org.darcstarsolutions.tools.darcoshin;
 
+import java.util.Objects;
+
 public class PlatformSpecification {
 
     public static final PlatformSpecification UNKNOWN = new PlatformSpecification(PlatformFamily.UNKNOWN, PlatformType.UNKNOWN, PlatformArchitecture.UNKNOWN);
 
     private PlatformFamily platformFamily;
     private PlatformType platformType;
-    private PlatformArchitecture architecture;
+    private PlatformArchitecture platformArchitecture;
 
-    public PlatformSpecification(PlatformFamily platformFamily, PlatformType platformType, PlatformArchitecture architecture) {
+    public PlatformSpecification(final PlatformFamily platformFamily, final PlatformType platformType, final PlatformArchitecture platformArchitecture) {
         this.platformFamily = platformFamily;
         this.platformType = platformType;
-        this.architecture = architecture;
+        this.platformArchitecture = platformArchitecture;
     }
 
     public PlatformFamily getPlatformFamily() {
@@ -24,9 +26,34 @@ public class PlatformSpecification {
 
 
     public PlatformArchitecture getArchitecture() {
-        return architecture;
+        return platformArchitecture;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlatformSpecification)) return false;
+        PlatformSpecification that = (PlatformSpecification) o;
+        return platformFamily == that.platformFamily &&
+                platformType == that.platformType &&
+                platformArchitecture == that.platformArchitecture;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(platformFamily, platformType, platformArchitecture);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PlatformSpecification{");
+        sb.append("platformFamily=").append(platformFamily);
+        sb.append(", platformType=").append(platformType);
+        sb.append(", platformArchitecture=").append(platformArchitecture);
+        sb.append('}');
+        return sb.toString();
+    }
 
     public enum PlatformFamily {
         UNKNOWN,
@@ -87,7 +114,11 @@ public class PlatformSpecification {
 
         BIT_64,
 
-        UNKNOWN
+        UNKNOWN;
 
+        @Override
+        public String toString() {
+            return super.toString();
+        }
     }
 }

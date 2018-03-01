@@ -1,9 +1,11 @@
 package org.darcstarsolutions.tools.darcoshin.utils.configurations
 
+import org.darcstarsolutions.tools.darcoshin.PlatformSpecification
 import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformArchitecture
 import org.darcstarsolutions.tools.darcoshin.PlatformSpecification.PlatformFamily
 import org.darcstarsolutions.tools.darcoshin.utils.PlatformSpecificationDeterminationService
 import org.darcstarsolutions.tools.darcoshin.utils.PlatformSpecificationDeterminationServiceImpl
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
@@ -91,5 +93,12 @@ class PlatformSpecificationDeterminationServiceTestConfiguration {
     @ConditionalOnMissingBean
     PlatformArchitecture defaultPlatformArchitecture() {
         return BIT_64
+    }
+
+    @Bean
+    @Autowired
+    PlatformSpecification platformSpecification(PlatformFamily platformFamily, PlatformType platformType, PlatformArchitecture platformArchitecture) {
+        return new PlatformSpecification(platformFamily, platformType, platformArchitecture)
+
     }
 }
