@@ -10,10 +10,22 @@ matrix:
   include:
     - os: linux
       dist: trusty
+      sudo: false
+      jdk: oraclejdk8
+      env:
+        - SPRING_PROFILES_ACTIVE: linux,64-bit
+    - os: linux
+      dist: trusty
+      sudo: false
+      jdk: oraclejdk9
       env:
         - SPRING_PROFILES_ACTIVE: linux,64-bit
     - os: osx
       osx_image: xcode9.3
+      env:
+        - SPRING_PROFILES_ACTIVE: mac-osx,64-bit
+    - os: osx
+      osx_image: xcode6.4
       env:
         - SPRING_PROFILES_ACTIVE: mac-osx,64-bit
 
